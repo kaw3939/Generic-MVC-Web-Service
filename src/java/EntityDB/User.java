@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package EntityDB;
 
 /**
@@ -39,13 +34,14 @@ public class User extends Person
     private int saltMin = 3;
     private int saltMax = 15;
 
-    @OneToMany
-    Set<EntityBase> children;
+    @OneToMany(mappedBy="owner")
+    private Set<EntityBase> children;
 
 
+    @SuppressWarnings("LeakingThisInConstructor")
     public User()
     {
-
+        setOwner(this);
     }
     @Override
     public String getEmail()
@@ -69,39 +65,39 @@ public class User extends Person
         this.userOauthToken = userOauthToken;
     }
 
-    public static User GetUserByPassword(String userName,String password)
+    public static User getUserByPassword(String userName,String password)
             throws java.security.NoSuchAlgorithmException,
             java.io.UnsupportedEncodingException
     {
 
-        User[] userRecord = selectByUsername(userName);
-        if(userRecord.length < 1)
+        User userRecord = selectByUsername(userName);
+        if(userRecord == null)
         {
             return null;
         }
-        String hash = AeSimpleMD5.MD5(password + userRecord[0].userSalt);
-        if (hash.equalsIgnoreCase(userRecord[0].userPasswordHash))
+        String hash = AeSimpleMD5.MD5(password + userRecord.userSalt);
+        if (hash.equalsIgnoreCase(userRecord.userPasswordHash))
         {
-            return userRecord[0];
+            return userRecord;
         }
 
         return null;
 
     }
 
-    public static User GetUserByOauthToken(String userName,String token)
+    public static User getUserByOauthToken(String userName,String token)
             throws java.security.NoSuchAlgorithmException,
             java.io.UnsupportedEncodingException
     {
 
-        User[] userRecord = selectByUsername(userName);
-        if(userRecord.length < 1)
+        User userRecord = selectByUsername(userName);
+        if(userRecord == null)
         {
             return null;
         }
-        if (token.equalsIgnoreCase(userRecord[0].userPasswordHash))
+        if (token.equalsIgnoreCase(userRecord.userPasswordHash))
         {
-            return userRecord[0];
+            return userRecord;
         }
 
         return null;
@@ -128,7 +124,12 @@ public class User extends Person
 
     }
 
-    protected static User[] selectByUsername(String name)
+    /***
+     * Selects a user by username (email)
+     * @param name User's email address
+     * @return The user with the matching username or null if no user exists.
+     */
+    protected static User selectByUsername(String name)
     {
         SessionFactory sessionFactory =SessionFactoryUtil.getInstance();
         // new AnnotationConfiguration().configure().buildSessionFactory();
@@ -146,9 +147,53 @@ public class User extends Person
         }
 
         tx.commit();
-        return user;
+        if(user.length==0)
+        {
+            return null;
+        }
+        return user[0];
 
 
+    }
+
+    /***
+     * Deletes the user and all entities owned by the user.
+     */
+    @Override
+    public void delete(boolean load)
+    {
+        
+        
+        Set<EntityBase> childrenSet = getChildren();
+        super.delete(load);
+        if(childrenSet !=null)
+        {
+            for(EntityBase entity:childrenSet)
+            {
+                if(!entity.equals(this))
+                {
+                    EntityBase e = selectByID(entity.getEntityId());
+                    if(e!=null)
+                    {
+                        e.delete(load);
+                    }
+                }
+            }
+        }
+        
+
+        
+    }
+
+    /**
+     * This method returns all of the entities owned by this user.
+     * note you cannot add children through the User object.  instead you must
+     * call addUser() through the entity.
+     * @return a Set of the entities owned by this user.
+     */
+    public Set<EntityBase> getChildren()
+    {
+        return children;
     }
 
 

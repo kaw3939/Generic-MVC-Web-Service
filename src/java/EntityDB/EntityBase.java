@@ -17,8 +17,52 @@ import org.hibernate.cfg.*;
 @Entity
 @Table(name="entitybase"
     ,catalog="entitydb")
-public class EntityBase extends PersistenceObject implements Serializable
+public class EntityBase implements Serializable
 {
+
+    /**
+     *
+     * @param objects
+     */
+    public static void deleteMany(EntityBase[] objects) {
+        SessionFactory sessionFactory = SessionFactoryUtil.getInstance();
+        // new AnnotationConfiguration().configure().buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        for (int i = 0; i < objects.length; i++) {
+            session.delete(objects[i]);
+        }
+        session.flush();
+        tx.commit();
+        //session.close();
+    }
+
+    public static void saveMany(EntityBase[] objects) {
+        SessionFactory sessionFactory = SessionFactoryUtil.getInstance();
+        // new AnnotationConfiguration().configure().buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        for (int i = 0; i < objects.length; i++) {
+            session.save(objects[i]);
+        }
+        session.flush();
+        tx.commit();
+        //session.close();
+    }
+
+    public static void close() {
+        SessionFactory sessionFactory = SessionFactoryUtil.getInstance();
+        // new AnnotationConfiguration().configure().buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        session.close();
+    }
+    //    protected PersistanceObject UniqueSelectQuery(String Query)
+    //    {
+    //
+    //
+    //
+    //
+    //    }
 
     @Id
     @Column(name="EntityID", unique=true, nullable=false, length=40)
@@ -38,14 +82,15 @@ public class EntityBase extends PersistenceObject implements Serializable
 
 
 
+
     
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="OwnerID")//, insertable=false, updatable=false)
+    @ManyToOne//(fetch=FetchType.EAGER)
+    @JoinColumn(name="OwnerID", referencedColumnName="EntityID")//, insertable=false, updatable=false)
      private User owner;
 
 
-
+      
      public EntityBase(){}
      public EntityBase(String entityId)
      {
@@ -60,12 +105,9 @@ public class EntityBase extends PersistenceObject implements Serializable
        this.entityParentEdit = entityParentEdit;
     }
 
-    private void selectOwner()
-    {
+    
 
-    }
-
-    public static String GenerateNewID()
+    public static String generateNewID()
     {
         return UUID.randomUUID().toString();
     }
@@ -122,7 +164,71 @@ public class EntityBase extends PersistenceObject implements Serializable
         //ownerID = owner.getEntityId();
     }
 
+    protected static EntityBase selectByID(String id)
+    {
+        SessionFactory sessionFactory =SessionFactoryUtil.getInstance();
+        // new AnnotationConfiguration().configure().buildSessionFactory();
+        Session session =sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        List l = session.createQuery("from EntityBase b where b.entityId=:ID")
+                .setString("ID", id).list();
+
+        EntityBase[] entity = new EntityBase[l.size()];
+
+        for(int i = 0;i<l.size();i++)
+        {
+            entity[i] = (User)l.get(i);
+        }
+
+        tx.commit();
+        if(entity.length==0)
+        {
+            return null;
+        }
+        return entity[0];
+
+
+    }
+
+    public void save()
+    {
+        save(false);
+    }
+
+    public void save(boolean load)
+    {
+        SessionFactory sessionFactory = SessionFactoryUtil.getInstance();
+        // new AnnotationConfiguration().configure().buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Object saved = this;
+        if(load)
+        {
+            saved = session.get(this.getClass(), entityId,LockMode.UPGRADE);
+        }
+        session.saveOrUpdate(saved);
+        session.flush();
+        tx.commit();
+        //session.close();
+    }
+
     
+    public void delete(boolean load) {
+        SessionFactory sessionFactory = SessionFactoryUtil.getInstance();
+        // new AnnotationConfiguration().configure().buildSessionFactory();
+        Session session = sessionFactory.getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Object deleted = this;
+        if(load)
+        {            
+            deleted = session.get(this.getClass(), entityId,LockMode.UPGRADE);
+        }
+        session.delete(deleted);
+        session.flush();
+        tx.commit();
+        //session.close();
+    }
 
     
 }

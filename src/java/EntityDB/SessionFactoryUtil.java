@@ -49,9 +49,9 @@ public class SessionFactoryUtil {
    * Opens a session and will not bind it to a session context
    * @return the session
    */
-	public Session openSession() {
-		return sessionFactory.openSession();
-	}
+//	public Session openSession() {
+//		return sessionFactory.openSession();
+//	}
 
 	/**
    * Returns a session from the session context. If there is no session in the context it opens a session,

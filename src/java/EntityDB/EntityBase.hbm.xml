@@ -16,14 +16,12 @@
         <property name="entityParentEdit" type="string">
             <column name="EntityParentEdit" length="20" />
         </property>
-        <!--<property name="ownerID" type="string">
-            <column name="OwnerID" length="40" />
-        </property>-->
-       
-        <!-- insert="false" update="false"/>-->
-        <many-to-one name="owner" class="EntityDB.User" fetch="select" access="field">
+        
+        <many-to-one name="owner" class="EntityDB.User" fetch="join"
+            access="field" ><!--cascade="save-update">-->
             <column name="OwnerID" length="40" />
         </many-to-one>
+
 
         <joined-subclass name="EntityDB.Event" table="event" catalog="entitydb">
             <key column="EntityID"/>
@@ -64,7 +62,11 @@
                 <column name="PeoplePhone" length="20" />
             </property>            
             <joined-subclass name="EntityDB.User" table="users" catalog="entitydb">
-                <key column="EntityID"/>                
+                <key column="EntityID"/>
+                <set name="children" inverse="true">
+                    <key column="OwnerID"/>
+                    <one-to-many class="EntityDB.EntityBase"/>
+                </set>
                 <property name="userPasswordHash" type="string">
                     <column name="UserPasswordHash" length="65" />
                 </property>

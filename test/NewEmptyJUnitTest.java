@@ -17,6 +17,8 @@ import static org.junit.Assert.*;
  *
  * @author Rick Shaub
  */
+
+
 public class NewEmptyJUnitTest {
 
     public NewEmptyJUnitTest() {

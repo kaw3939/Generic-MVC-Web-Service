@@ -7,6 +7,7 @@ package EntityDB;
 import java.util.*;
 import javax.persistence.*;
 import java.io.Serializable;
+
 /**
  *
  * @author Rick Shaub

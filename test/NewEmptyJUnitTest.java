@@ -18,6 +18,7 @@ import EntityDB.*;
  */
 
 
+
 public class NewEmptyJUnitTest {
 
     public NewEmptyJUnitTest() {

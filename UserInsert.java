@@ -12,7 +12,7 @@ public class UserInsert {
 
     public static String addNewUser (String userID,String userPWHash,String userEmail){
         try{
-            SessionFactory sf = NewHibernateUtil.getSessionFactory();
+             SessionFactory sf = NewHibernateUtil.getSessionFactory();
             Session session = sf.openSession();
             Transaction tx =  session.beginTransaction();
 

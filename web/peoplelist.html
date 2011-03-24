@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>People List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=uft-8" />
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/popform.css" />
+<link type="text/css" href="./jqueryui180/css/redmond/jquery-ui-1.8.10.custom.css" rel="stylesheet" />	
+<link rel="stylesheet" type="text/css" href="css/jqui_mod.css" />
+<script type="text/javascript" src="./jqueryui180/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="./jqueryui180/js/jquery-ui-1.8.10.custom.min.js"></script>
+</head>
+<body>
+<!--header part begin-->
+<div id="Header">
+	<h1>
+    	<a href="orghome.html" target="_self"><img src="img/zzzzhome.png" width="50" height="50" alt="Home Logo" /></a>
+    </h1>
+    <div id="navigation" class="ui-tabs">
+    	<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+        	<li class="ui-state-default ui-corner-top menu"><a href="#">People Management</a><a class="submenu1 border-style1" id="create" href="#">Create People</a></li>
+            <li class="ui-state-default ui-corner-top menu"><a href="#">Event Management</a><a class="submenu1 border-style1" href="#">Create Events</a></li>
+        </ul>
+    </div>
+</div>
+<!--header part end-->
+<!--body part begin-->
+<div id="mainBody" class="ui-accordion">
+	<div id="content">
+        <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false"><span class="ui-icon ui-icon-triangle-1-e"></span><a href="#" style="padding-left:1.7em;" tabindex="-1">People List</a></h3>
+        <table width="100%" border="0" cellpadding="10" cellspacing="10">
+            <tr class="border-style1">
+                <th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Action</th>
+            </tr>
+            <tr class="border-style1">
+                <td>aa</td><td>bb</td><td>abc@ip.com</td><td>1234567890</td><td><a href="#" class="edit">Edit</a>&nbsp;&nbsp;<a href="#" class="delete">Delete</a></td>
+            </tr>
+            <tr class="border-style1">
+                <td>aa</td><td>bb</td><td>abc@ip.com</td><td>1234567890</td><td><a href="#" class="edit">Edit</a>&nbsp;&nbsp;<a href="#" class="delete">Delete</a></td>
+            </tr>
+            <tr class="border-style1">
+                <td>aa</td><td>bb</td><td>abc@ip.com</td><td>1234567890</td><td><a href="#" class="edit">Edit</a>&nbsp;&nbsp;<a href="#">Delete</a></td>
+            </tr>
+            <tr class="border-style1">
+                <td>aa</td><td>bb</td><td>abc@ip.com</td><td>1234567890</td><td><a href="#" class="edit">Edit</a>&nbsp;&nbsp;<a href="#">Delete</a></td>
+            </tr>
+            <tr class="border-style1">
+                <td>aa</td><td>bb</td><td>abc@ip.com</td><td>1234567890</td><td><a href="#" class="edit">Edit</a>&nbsp;&nbsp;<a href="#">Delete</a></td>
+            </tr>
+        </table>
+        <p style="margin-top:20px;"><a href="#" id="add_people" class="ui-state-default ui-corner-all dialog_link"><span class="ui-icon ui-icon-newwin"></span>Add</a></p>
+    </div>    
+    <div id="sideBar">
+  	 <form method="post" action="#">
+        <fieldset class="ui-corner-all">
+          <legend>Login</legend>
+          <label>User name:</label><br />
+          <input type="text" size="20" name="name" />
+          <br />
+          <label>Password:</label><br />
+          <input type="password" size="20" name="password" />
+          <br />
+          <br />
+          <input type="submit" value="Login" />
+          <input type="reset" value="Reset" />
+        </fieldset>
+      </form>
+   	<p style="margin-top:20px;"><a href="#" id="create_user" class="ui-state-default ui-corner-all dialog_link"><span class="ui-icon ui-icon-newwin"></span>Create a new account</a></p>
+  	</div> 
+  
+  <div class="blankfix"></div>
+</div>
+<!--body part end-->
+<!--foot part begin-->
+<div id="Foot">
+  <div class="clearfix">
+    <p>Powered by Dali.</p>
+  </div>
+</div>
+<!--foot part end-->
+ <!-- ui-dialog -->
+		<div id="dialog_add" title="Personal Information">
+			<form class="popForm" name="addPeopleForm" id="addPeopleForm" action="#">
+            	<dl>
+                	<dt>First Name:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Last Name:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Phone:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Email:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                </dl>
+            </form>
+		</div>
+        
+    <!-- ui-dialog -->
+		<div id="dialog_update" title="Personal Information">
+			<form class="popForm" name="addPeopleForm" id="addPeopleForm" action="#">
+            	<dl>
+                	<dt>First Name:</dt>
+                    <dd><input type="text" width="30" value="aa" /></dd>
+                    <dt>Last Name:</dt>
+                    <dd><input type="text" width="30" value="bb" /></dd>
+                    <dt>Phone:</dt>
+                    <dd><input type="text" width="30" value="1234567890" /></dd>
+                    <dt>Email:</dt>
+                    <dd><input type="text" width="30" value="abc@ip.com" /></dd>
+                </dl>
+            </form>
+		</div>
+<!-- ui-dialog -->
+		<div id="dialog_register" title="New User Information">
+			<form class="popForm" name="registerForm" id="registerForm" action="#">
+            	<dl>
+                	<dt>User Name:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Password:</dt>
+                    <dd><input type="password" width="30" /></dd>
+                	<dt>First Name:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Last Name:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Phone:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Email:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                </dl>
+            </form>
+		</div>  
+<script type="text/javascript">
+$(function(){
+		   // New User Dialog			
+				$('#dialog_register').dialog({
+					autoOpen: false,
+					width: 600,
+					modal:true,
+					buttons: {
+						"Submit": function() { 
+							//do data submition function here
+							$(this).dialog("close"); 
+						}, 
+						"Reset": function() { 
+							//reset form here
+						} 
+					}
+				});
+				
+		   // Add Dialog			
+				$('#dialog_add').dialog({
+					autoOpen: false,
+					width: 600,
+					modal:true,
+					buttons: {
+						"Submit": function() { 
+							//do data submition function here
+							$(this).dialog("close"); 
+						}, 
+						"Reset": function() { 
+							//reset form here
+						} 
+					}
+				});
+				
+			// Update Dialog			
+				$('#dialog_update').dialog({
+					autoOpen: false,
+					width: 600,
+					modal:true,
+					buttons: {
+						"Update": function() { 
+							//do update function here
+							$(this).dialog("close"); 
+						}
+					}
+				});
+				
+				
+				// New User Dialog Link
+				$('#create_user').click(function(){
+					$('#dialog_register').dialog('open');
+					return false;
+				});
+				
+				// Add Dialog Link
+				$('#add_people').click(function(){
+					$('#dialog_add').dialog('open');
+					return false;
+				});
+				
+				$('a#create').click(function(){
+					$('#dialog_add').dialog('open');
+					return false;
+				});
+				
+				// Update Dialog Link
+				$('a.edit').click(function(){
+					$('#dialog_update').dialog('open');
+					return false;
+				});
+				
+				$('a.delete').click(function(){
+											 /*alert(1);
+					$(this).css("backgroundColor", "#000");
+					return false;*/
+				});
+				
+		   })
+</script>
+</body>
+</html>

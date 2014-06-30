@@ -1,0 +1,172 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/* ======================================================================
+ * sc.reset.source.css
+ * 公用CSS文件，CSSreset(YUI 2.6.0)，字体色，字体大小，字体粗细
+====================================================================== */
+html{color:#000;background:#FFF;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;}
+li{list-style:none;}
+caption,th{text-align:left;}
+q:before,q:after{content:'';}
+abbr,acronym {border:0;font-variant:normal;}
+/* to preserve line-height and selector appearance */
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+input,textarea,select{font-family:tahoma;font-size:inherit;font-weight:inherit;}
+/*to enable resizing for IE*/
+input,textarea,select{*font-size:100%;}
+/*because legend doesn't inherit in IE */
+legend{color:#000;}
+del,ins{text-decoration:none;}
+
+/* ---------------------- 全局 --------------- */
+html body{
+	font:14px Verdana, Geneva, sans-serif;
+	margin:25px;
+}
+
+/* ---------------------- 头部 --------------- */
+#Header {
+	width:950px;
+	margin: 0 auto;
+	
+}
+#Header h1 {
+	clear:both;
+	
+	padding:8px 16px 5px 10px;
+	
+	text-align:left;
+	display:inline;
+}
+#Header h1 a{
+	color:#333;
+	font-size:24px;
+	text-decoration:none;
+}
+
+#Header #navigation{
+	height:54px;
+	width:950px;
+	z-index:100;
+}
+#Header #navigation li.menu{
+	position:relative;
+}
+#Header #navigation li.menu a.submenu1{
+	display:none;
+}
+#Header #navigation li.menu:hover a.submenu1{
+	position:absolute;
+	top:32px;
+	left:0px;
+	display:block;
+}
+#Header .border-style1{
+	background-color:#F9F9F9;
+	border:1px solid #CCC;
+	border-top:none;
+}
+
+/* ---------------------- 主体 --------------- */
+#mainBody{width:950px; margin:10px auto 0; line-height:1.6;}
+
+#mainBody .border-style1{
+	background-color:#F9F9F9;
+	border:1px solid #CCC;
+	border-top:none;
+	padding:10px;
+}
+
+#mainBody .text-center{
+	text-align:center;
+}
+
+#mainBody .text-right{
+	text-align:right;
+}
+/* -------------- 内容 --------------- */
+#content{ width:694px; float:left; }
+/* -------------- 边栏 --------------- */
+#sideBar{width:235px; float:left; margin-left:20px;}
+
+#sideBar fieldset{
+	border:1px solid #A6C9E2;
+	padding:1em;
+	display:block;
+}
+
+#sideBar legend{
+	font-size:1em;
+	font-weight:bold;
+}
+/* ---------------------- 尾部 --------------- */
+#Foot {	
+	clear:both;
+	margin:10px auto 10px;
+	text-align:center;
+	width:950px;
+	color:#666;
+	line-height:1.6;
+}
+#Foot .Shell {
+	/*border-top:1px solid #CCCCCC;*/
+	margin:0px auto;
+	text-align:center;
+	width:100%;
+	height:28px;
+	background:url(images/pub.png) 0 -450px no-repeat;
+	position:relative;
+}
+#Foot span.flright{position:absolute; right:18px; top:6px;}
+#Foot ul {
+	display:block;
+	margin:0px auto;
+	padding-top:8px;
+	text-align:center;
+	width:510px;
+	overflow:hidden;
+	line-height:1.2;
+}
+#Foot ul li {
+	display:block;
+	float:left;
+	padding:0 7px 0 8px;
+	border-left:1px solid #454545;
+}
+#Foot ul li a { color:#454545; text-decoration:none; }
+#Foot ul li.first{
+	border:none;
+}
+#Foot .note{ margin-top:10px; }
+/* ---------------------- CSS-HACK --------------- */
+.clearfix:after {
+	clear:both;
+	content:".";
+	display:block;
+	height:0;
+	visibility:hidden;
+}
+.clearfix {
+	display:inline-table;
+}
+* html .clearfix {
+	height:1%;/*ie6*/
+}
+*+html .clearfix {
+	min-height:1px;
+}
+.clearfix {
+	display:block;
+}
+.clearclass {
+width:auto;line-height:1em;height:auto;float:none;clear:both;padding:0px;margin:0px;background:none repeat 0;list-style:none;text-indent:0;text-align:left;border:none;color:#000;
+}
+.blankfix{
+	 clear:both; height:1px; overflow:hidden;
+}

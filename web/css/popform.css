@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+
+.popForm dl{
+	clear:both;
+}
+
+.popForm dt{
+	width:180px;
+	text-align:right;
+	float:left;
+	margin-top:15px;
+}
+
+.popForm dd{
+	width:368px;
+	float:left;
+	margin:15px 0 0 20px;
+}

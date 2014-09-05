@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field">
+    <class name="EntityDB.EntityBase" table="entitybase" catalog="entitydb">
+        <id name="entityId" type="string">
+                <column name="EntityID" length="40" />
+                <generator class="assigned" />
+        </id>
+        
+        <property name="entityTypeId" type="java.lang.Integer">
+            <column name="EntityTypeID" />
+        </property>
+        <property name="entityAccessStatus" type="string">
+            <column name="EntityAccessStatus" length="20" />
+        </property>
+        <property name="entityParentEdit" type="string">
+            <column name="EntityParentEdit" length="20" />
+        </property>
+        
+        <many-to-one name="owner" class="EntityDB.User" fetch="join"
+            access="field" ><!--cascade="save-update">-->
+            <column name="OwnerID" length="40" />
+        </many-to-one>
+
+
+        <joined-subclass name="EntityDB.Event" table="event" catalog="entitydb">
+            <key column="EntityID"/>
+
+            <property name="eventStartDate" type="timestamp">
+                <column name="EventStartDate" length="15" not-null="true" />
+            </property>
+            <property name="eventEndDate" type="timestamp">
+                <column name="EventEndDate" length="15" />
+            </property>
+        </joined-subclass>
+
+        <joined-subclass name="EntityDB.Location" table="location" catalog="entitydb">
+            <key column="EntityID"/>
+            <property name="locationName" type="string">
+                <column name="LocationName" length="50" />
+            </property>
+            <property name="locationStreetAddress" type="string">
+                <column name="LocationStreetAddress" length="50" />
+            </property>
+            <property name="locationZipCode" type="string">
+                <column name="LocationZipCode" length="10" />
+            </property>
+        </joined-subclass>
+
+        <joined-subclass name="EntityDB.Person" table="people" catalog="entitydb">
+            <key column="EntityID"/>
+            <property name="peopleFirstName" type="string">
+                <column name="PeopleFirstName" length="50" />
+            </property>
+            <property name="peopleLastName" type="string">
+                <column name="PeopleLastName" length="50" />
+            </property>
+            <property name="peopleEmail" type="string">
+                <column name="PeopleEmail" length="100" />
+            </property>
+            <property name="peoplePhone" type="string">
+                <column name="PeoplePhone" length="20" />
+            </property>            
+            <joined-subclass name="EntityDB.User" table="users" catalog="entitydb">
+                <key column="EntityID"/>
+                <set name="children" inverse="true">
+                    <key column="OwnerID"/>
+                    <one-to-many class="EntityDB.EntityBase"/>
+                </set>
+                <property name="userPasswordHash" type="string">
+                    <column name="UserPasswordHash" length="65" />
+                </property>
+                <property name="userSalt" type="string">
+                    <column name="UserSalt" length="15" />
+                </property>
+                <property name="userOauthToken" type="string">
+                    <column name="UserOauthToken" length="30" />
+                </property>
+                <property name="userEmail" type="string">
+                    <column name="UserEmail" length="100" />
+                </property>  
+            </joined-subclass>
+        </joined-subclass>
+        
+    </class>
+
+</hibernate-mapping>

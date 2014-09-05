@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>OIS Homepage</title>
+<meta http-equiv="Content-Type" content="text/html; charset=uft-8" />
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/popform.css" />
+<link type="text/css" href="./jqueryui180/css/redmond/jquery-ui-1.8.10.custom.css" rel="stylesheet" />	
+<link rel="stylesheet" type="text/css" href="css/jqui_mod.css" />
+<script type="text/javascript" src="./jqueryui180/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="./jqueryui180/js/jquery-ui-1.8.10.custom.min.js"></script>
+</head>
+<body>
+<!--header part begin-->
+<div id="Header">
+	<h1>
+    	<a href="#"><img src="img/zzzzhome.png" width="50" height="50" alt="Home Logo" /></a>
+    </h1>
+   
+    
+    <div id="navigation" class="ui-tabs">
+    	<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+        	<li class="ui-state-default ui-corner-top menu"><a href="./peoplelist.html">People Management</a><a class="submenu1 border-style1" id="create" href="#">Create People</a></li>
+            <li class="ui-state-default ui-corner-top menu"><a href="#">Event Management</a><a class="submenu1 border-style1" href="#">Create Events</a></li>
+        </ul>
+    </div>
+</div>
+<!--header part end-->
+<!--body part begin-->
+<div id="mainBody">
+  
+  <div id="content">
+  <h2 class="demoHeaders">My Events</h2>
+  	<div id="accordion">
+			<div>
+				<h3><a href="#">1/12-2/12&nbsp;&nbsp;Career fair&nbsp;&nbsp;NJIT</a></h3>
+				<div>
+                <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span class="ui-dialog-title" id="ui-dialog-title-dialog_add">Participants</span></div>
+                        <div class="border-style1">
+                        <p class="text-center">Dali Ding&nbsp;&nbsp;<a class="detail" href="#">See details</a></p>
+                    </div>
+                    <div class="border-style1">
+                        <p class="text-center">Dali Ding&nbsp;&nbsp;<a class="detail" href="#">See details</a></p>
+                    </div>
+                    <div class="border-style1">
+                        <p class="text-center">Dali Ding&nbsp;&nbsp;<a class="detail" href="#">See details</a></p>
+                    </div>
+                    <div class="border-style1">
+                        <p class="text-center">Dali Ding&nbsp;&nbsp;<a class="detail" href="#">See details</a></p>
+                    </div>
+               </div>
+			</div>
+			<div>
+				<h3><a href="#"><span>1/12</span>-<span>2/12</span>&nbsp;&nbsp;<span>Career fair</span>&nbsp;&nbsp;<span>NJIT</span></a></h3>
+				<div>Phasellus mattis tincidunt nibh.</div>
+			</div>
+			<div>
+				<h3><a href="#"><span>1/12</span>-<span>2/12</span>&nbsp;&nbsp;<span>Career fair</span>&nbsp;&nbsp;<span>NJIT</span></a></h3>
+				<div>Nam dui erat, auctor a, dignissim quis.</div>
+			</div>
+		</div>
+  
+    <p class="text-right"><a href="#">More Events...</a></p>
+  </div>
+  <div id="sideBar">
+  	 <form method="post" action="#">
+        <fieldset class="ui-corner-all">
+          <legend>Login</legend>
+          <label>User name:</label><br />
+          <input type="text" size="20" name="name" />
+          <br />
+          <label>Password:</label><br />
+          <input type="password" size="20" name="password" />
+          <br />
+          <br />
+          <input type="submit" value="Login" />
+          <input type="reset" value="Reset" />
+        </fieldset>
+      </form>
+   	<p style="margin-top:20px;"><a href="#" id="create_user" class="ui-state-default ui-corner-all dialog_link"><span class="ui-icon ui-icon-newwin"></span>Create a new account</a></p>
+  </div> 		
+  <div class="blankfix"></div>
+</div>
+<!--body part end-->
+<!--foot part begin-->
+<div id="Foot">
+  <div class="clearfix">
+    <p>Powered by Dali.</p>
+  </div>
+</div>
+<!--foot part end-->
+
+<!-- ui-dialog -->
+		<div id="dialog_detail" title="Personal Information">
+			<form class="popForm" name="peopleDetailForm" id="peopleDetailForm">
+            	<dl>
+                	<dt>First Name:</dt>
+                    <dd>dali</dd>
+                    <dt>Last Name:</dt>
+                    <dd>ding</dd>
+                    <dt>Phone:</dt>
+                    <dd>1234567890</dd>
+                    <dt>Email:</dt>
+                    <dd>dali@email.com</dd>
+                </dl>
+            </form>
+		</div>
+        
+<!-- ui-dialog -->
+		<div id="dialog_add" title="New Person Information">
+			<form class="popForm" name="addPeopleForm" id="addPeopleForm" action="#">
+            	<dl>
+                	<dt>First Name:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Last Name:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Phone:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Email:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                </dl>
+            </form>
+		</div>
+        
+<!-- ui-dialog -->
+		<div id="dialog_register" title="New User Information">
+			<form class="popForm" name="registerForm" id="registerForm" action="#">
+            	<dl>
+                	<dt>User Name:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Password:</dt>
+                    <dd><input type="password" width="30" /></dd>
+                	<dt>First Name:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Last Name:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Phone:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                    <dt>Email:</dt>
+                    <dd><input type="text" width="30" /></dd>
+                </dl>
+            </form>
+		</div>        
+<script type="text/javascript">
+$(function(){
+		   // New User Dialog			
+				$('#dialog_register').dialog({
+					autoOpen: false,
+					width: 600,
+					modal:true,
+					buttons: {
+						"Submit": function() { 
+							//do data submition function here
+							$(this).dialog("close"); 
+						}, 
+						"Reset": function() { 
+							//reset form here
+						} 
+					}
+				});
+				
+		   // Add Dialog			
+				$('#dialog_add').dialog({
+					autoOpen: false,
+					width: 600,
+					modal:true,
+					buttons: {
+						"Submit": function() { 
+							//do data submition function here
+							$(this).dialog("close"); 
+						}, 
+						"Reset": function() { 
+							//reset form here
+						} 
+					}
+				});
+				
+		   // Update Dialog			
+				$('#dialog_detail').dialog({
+					autoOpen: false,
+					width: 600,
+					modal:true
+				});
+				
+				
+				// New User Dialog Link
+				$('#create_user').click(function(){
+					$('#dialog_register').dialog('open');
+					return false;
+				});
+				
+				// Update Dialog Link
+				$('a.detail').click(function(){
+					$('#dialog_detail').dialog('open');
+					return false;
+				});
+				
+				// Add Dialog Link
+				$('a#create').click(function(){
+					$('#dialog_add').dialog('open');
+					return false;
+				});
+				
+			// Accordion
+				$("#accordion").accordion({ header: "h3" });
+		   })
+</script>
+</body>
+</html>
